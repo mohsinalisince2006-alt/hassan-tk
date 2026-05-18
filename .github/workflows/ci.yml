@@ -1,0 +1,29 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Show Files
+        run: ls -la
+
+      - name: Check README Exists
+        run: test -f README.md
+
+      - name: Check PDF Exists
+        run: test -f "SVV QUIZ.pdf"
+
+      - name: Success Message
+        run: echo "CI Pipeline executed successfully!"
